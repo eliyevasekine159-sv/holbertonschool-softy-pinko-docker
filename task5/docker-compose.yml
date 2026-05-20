@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  back-end:
+    build: ./back-end
+    expose:
+      - "5252"
+  front-end:
+    build: ./front-end
+    expose:
+      - "9000"
+  proxy:
+    build: ./proxy
+    ports:
+      - "80:80"
+    depends_on:
+      - back-end
+      - front-end
